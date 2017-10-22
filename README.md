@@ -17,4 +17,6 @@ To run the server open up your terminal and run `php index.php`. By default the 
 
 Here's a short video demonstration on installing and running the server.
 
-`TODO`
+The first time the server is run it takes about 3 seconds in the video, but in reality it took a minute and a half. The second time the server is run it's in real speed.
+
+[![Telegram Server Demonstration](http://i3.ytimg.com/vi/UJEQy7Ugcso/maxresdefault.jpg)](https://youtu.be/UJEQy7Ugcso)
