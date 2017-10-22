@@ -1,0 +1,29 @@
+{
+    "name": "tonybogdanov/enya-telegram-server",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/danog/phpseclib"
+        }, {
+            "type": "git",
+            "url": "https://github.com/danog/MadelineProto"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "react/http": "^0.7.4",
+        "danog/madelineproto": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "TelegramServer\\": "classes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tony Bogdanov",
+            "email": "support@tonybogdanov.com"
+        }
+    ]
+}
