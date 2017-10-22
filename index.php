@@ -23,16 +23,32 @@ if (!function_exists('posix_isatty')) {
 }
 
 $mtpSession = Config::config(Config::CACHE_PATH) . '/session';
+
+if (isset($argv[1]) && 'clean' === $argv[1]) {
+    @unlink($mtpSession);
+    @unlink($mtpSession . '.lock');
+    clearstatcache();
+}
+
 try {
     if (!file_exists($mtpSession)) {
         throw new \Exception('');
     }
     $mtp = Serialization::deserialize($mtpSession);
+    $mtp->session = $mtpSession;
 } catch (\Exception $e) {
     $mtp = new API([
+        'connection_settings' => [
+            'all' => [
+                'test_mode' => Config::config(Config::TEST_MODE)
+            ]
+        ],
         'app_info' => [
             'api_id' => Config::config(Config::API_ID),
             'api_hash' => Config::config(Config::API_HASH)
+        ],
+        'updates' => [
+            'handle_updates' => false
         ]
     ]);
     $mtp->serialize($mtpSession);

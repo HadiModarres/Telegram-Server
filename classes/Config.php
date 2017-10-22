@@ -14,6 +14,8 @@ class Config
 
     const SERVER_SALT = 6;
 
+    const TEST_MODE = 7;
+
     /**
      * @var Config
      */

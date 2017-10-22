@@ -20,5 +20,8 @@ return [
 
     // provide a random string sequence which will be used to verify requests and sign responses
     // only requests signed with this salt will be honored
-    Config::SERVER_SALT     => '.XSRApwB|=KR9SRlq)%ejzqi~x/Oa.sgtq2_h&[@RfRNL]h,cP:*I4>R&d-c2,s'
+    Config::SERVER_SALT     => '.XSRApwB|=KR9SRlq)%ejzqi~x/Oa.sgtq2_h&[@RfRNL]h,cP:*I4>R&d-c2,s',
+
+    // set this to TRUE to enable test mode, set to FALSE in production
+    Config::TEST_MODE       => true
 ];

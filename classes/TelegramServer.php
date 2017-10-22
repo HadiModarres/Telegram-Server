@@ -159,10 +159,19 @@ class TelegramServer
             case 'login.complete':
                 list($key, $api) = $this->requireSession($params);
 
+                $code = $this->requireParam('code', $params);
+                $firstName = $this->requireParam('first_name', $params);
+                $lastName = $this->requireParam('last_name', $params);
+
                 /** @var MTProto $mtp */
                 $mtp = $api->API;
 
-                return (array) $mtp->complete_phone_login($this->requireParam('code', $params));
+                $result = (array) $mtp->complete_phone_login($code);
+                if ('account.needSignup' === $result['_']) {
+                    return (array) $mtp->complete_signup($firstName, $lastName);
+                }
+
+                return $result;
 
             default:
                 throw new InvalidParamException('action', $action);
