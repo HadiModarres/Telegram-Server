@@ -24,15 +24,15 @@ if (!function_exists('posix_isatty')) {
 
 array_shift($argv);
 
+Config::config(Config::TEST_MODE, in_array('test', $argv));
+
+$mtpSession = Config::config(Config::CACHE_PATH) . '/session' . (Config::config(Config::TEST_MODE) ? '-test-mode' : '');
+
 if (in_array('clean', $argv)) {
     @unlink($mtpSession);
     @unlink($mtpSession . '.lock');
     clearstatcache();
 }
-
-Config::config(Config::TEST_MODE, in_array('test', $argv));
-
-$mtpSession = Config::config(Config::CACHE_PATH) . '/session' . (Config::config(Config::TEST_MODE) ? '-test-mode' : '');
 
 try {
     if (!file_exists($mtpSession)) {
